@@ -28,6 +28,6 @@ section {
 }
 
 .inactive {
-    opacity: 0.5; /* or any other styling to indicate the inactive state */
-    pointer-events: none; /* to prevent interactions with the inactive elements */
+    opacity: 0.5;
+    pointer-events: none;
 }

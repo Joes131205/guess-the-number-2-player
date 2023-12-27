@@ -20,77 +20,98 @@ const restartButton = document.getElementById("restartButton");
 
 // Game Logic
 
+let randomNumbers = [0, 0];
+let guesses = [0, 0];
 
-let randomNumber1;
-let randomNumber2;
+let currentPlayer = 0;
+
+let playing = true;
+
 restartButton.addEventListener("click", startGame);
 
 function startGame() {
-    randomNumber1 = generateRandomNumber()
-    randomNumber2 = generateRandomNumber()
-    console.log(randomNumber1, randomNumber2)
-    switchPlayer(player1Container, player2Container, guess2Button, number2Input)
+    randomNumbers[0] = generateRandomNumber();
+    randomNumbers[1] = generateRandomNumber();
+
+    guesses[0] = 0;
+    guesses[1] = 0;
+
     number1Input.value = "";
     number2Input.value = "";
-    randomNumber1El.textContent = "?"
-    randomNumber2El.textContent = "?"
+
+    randomNumber1El.textContent = "?";
+    randomNumber2El.textContent = "?";
+
+    player2Container.classList.add("inactive");
+    player1Container.classList.remove("inactive");
 }
 
+startGame();
 function generateRandomNumber() {
     return Math.floor(Math.random() * 101);
 }
 
-function switchPlayer(activePlayer, inactivePlayer, activeGuess, activeInput) {
-    activePlayer.classList.remove("inactive");
-    inactivePlayer.classList.add("inactive");
+function switchPlayer() {
+    player1Container.classList.toggle("inactive");
+    player2Container.classList.toggle("inactive");
+}
+function handleWin(player, container) {
+    playing = false;
+    container.classList.add("winner");
+}
+function handleGuess(
+    container,
+    currentPlayer,
+    input,
+    button,
+    status,
+    guessText,
+) {
+    if (playing) {
+        const guess = Number(input.value);
+        if (!guess || guess < 0 || guess > 100) {
+            button.style.background = "red";
+            setTimeout(() => {
+                button.style.background = "white";
+            }, 500);
+            return;
+        }
 
-    activeGuess.disabled = true;
-    activeInput.disabled = true;
-
-    inactivePlayer.querySelector("input").disabled = false;
-    inactivePlayer.querySelector("button").disabled = false;
+        if (guess === randomNumbers[currentPlayer]) {
+            handleWin(currentPlayer, container);
+            return;
+        } else {
+            guesses[currentPlayer]++;
+            guessText.textContent = guesses[currentPlayer];
+            if (guess > randomNumbers[currentPlayer]) {
+                status.textContent = "Too High!";
+            } else if (guess < randomNumbers[currentPlayer]) {
+                status.textContent = "Too Low!";
+            }
+            currentPlayer = currentPlayer === 0 ? 1 : 0;
+            switchPlayer();
+        }
+    }
 }
 
-guess1Button.addEventListener("click", function() {
-    const input = Number(number1Input.value)
-    if (!input || input < 0 || input > 100) {
-        guess1Button.style.background = "red"
-        setTimeout(() => {
-            guess1Button.style.background = "white"
-        }, 500);
-        return;
-    }
-    if (input === randomNumber1) {
-        handleWin(1, player1Container, guess1Button, number1Input)
-    } else {
-        if (input > randomNumber1) {
-            statusText1.textContent = "Too High!"
-        } else if (input < randomNumber1){
-            statusText1.textContent = "Too Low!"
-        }
-        switchPlayer(player2Container, player1Container, guess1Button, number1Input)
-    }
-    console.log(input)
-})
+guess1Button.addEventListener("click", function () {
+    handleGuess(
+        player1Container,
+        currentPlayer,
+        number1Input,
+        guess1Button,
+        statusText1,
+        guessesText1,
+    );
+});
 
-guess2Button.addEventListener("click", function() {
-    const input = Number(number2Input.value)
-    if (!input || input < 0 || input > 100) {
-        guess2Button.style.background = "red"
-        setTimeout(() => {
-            guess2Button.style.background = "white"
-        }, 500);
-        return;
-    }
-    if (input === randomNumber2) {
-        handleWin(1, player2Container, guess2Button, number2Input)
-    } else {
-        if (input > randomNumber2) {
-            statusText2.textContent = "Too High!"
-        } else if (input < randomNumber2){
-            statusText2.textContent = "Too Low!"
-        }
-        switchPlayer(player1Container, player2Container, guess2Button, number2Input)
-    }
-    console.log(input)
-})
+guess2Button.addEventListener("click", function () {
+    handleGuess(
+        player1Container,
+        currentPlayer,
+        number2Input,
+        guess2Button,
+        statusText2,
+        guessesText2,
+    );
+});
