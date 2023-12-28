@@ -55,18 +55,22 @@ function startGame() {
   player1Container.classList.remove("winner");
 
   playing = true;
+  currentPlayer = 0;
+
+  console.log(randomNumbers);
 }
 
 startGame();
+
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 101);
+  return Math.floor(Math.random() * 100) + 1;
 }
 
 function switchPlayer() {
   player1Container.classList.toggle("inactive");
   player2Container.classList.toggle("inactive");
 }
-function handleWin(player, container, status) {
+function handleWin(container, status) {
   playing = false;
   container.classList.add("winner");
   status.textContent = "You got it!";
@@ -75,7 +79,6 @@ function handleWin(player, container, status) {
 }
 function handleGuess(container, input, button, status, guessText) {
   if (playing) {
-    console.log(randomNumbers);
     const guess = Number(input.value);
     if (!guess || guess < 0 || guess > 100) {
       button.style.background = "red";
@@ -88,7 +91,7 @@ function handleGuess(container, input, button, status, guessText) {
     guessText.textContent = guesses[currentPlayer];
     console.log(guess === randomNumbers[currentPlayer]);
     if (guess === randomNumbers[currentPlayer]) {
-      handleWin(currentPlayer, container, status);
+      handleWin(container, status);
       return;
     } else {
       if (guess > randomNumbers[currentPlayer]) {

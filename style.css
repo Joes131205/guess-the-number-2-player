@@ -12,6 +12,10 @@ nav {
   text-align: center;
   position: absolute;
   width: 100%;
+  z-index: 10;
+  background: rgb(0, 0, 0);
+  box-shadow: 0 0 5px 3px white;
+  color: white;
 }
 
 section {
@@ -28,17 +32,39 @@ section {
   justify-content: center;
 }
 
+.player1 {
+  background: #00232b;
+  border: 5px solid;
+  border-style: none solid none none;
+  border-right-color: #ad9402;
+  color: white;
+  transition: 0.2s;
+}
+.player2 {
+  background: #220000;
+  border: 5px solid;
+  border-style: none none none solid;
+  border-left-color: #ad9402;
+  color: white;
+  transition: 0.2s;
+}
+
 .inactive {
   opacity: 0.5;
   pointer-events: none;
+  background: #1f1f1f;
 }
 
 #restartButton {
   position: absolute;
   top: 5rem;
-  left: 46%;
+  left: 40%;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+  font-size: larger;
 }
 
 .winner {
-  background: yellow;
+  color: black;
+  background: #bdbd00;
 }
