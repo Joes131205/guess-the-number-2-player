@@ -54,6 +54,9 @@ function startGame() {
   player2Container.classList.remove("winner");
   player1Container.classList.remove("winner");
 
+  randomNumber1El.style.padding = "1rem 3rem";
+  randomNumber2El.style.padding = "1rem 3rem";
+
   playing = true;
   currentPlayer = 0;
 
@@ -74,6 +77,13 @@ function handleWin(container, status) {
   playing = false;
   container.classList.add("winner");
   status.textContent = "You got it!";
+  currentPlayer === 0
+    ? (statusText2.textContent = "Yikes!")
+    : (statusText1.textContent = "Yikes!");
+
+  currentPlayer === 0
+    ? (randomNumber1El.style.padding = "1rem 6rem")
+    : (randomNumber2El.style.padding = "1rem 6rem");
   randomNumber1El.textContent = randomNumbers[0];
   randomNumber2El.textContent = randomNumbers[1];
 }
@@ -96,8 +106,16 @@ function handleGuess(container, input, button, status, guessText) {
     } else {
       if (guess > randomNumbers[currentPlayer]) {
         status.textContent = "Too High!";
+        container.classList.add("tooHigh");
+        setTimeout(() => {
+          container.classList.remove("tooHigh");
+        }, 1000);
       } else if (guess < randomNumbers[currentPlayer]) {
         status.textContent = "Too Low!";
+        container.classList.add("tooLow");
+        setTimeout(() => {
+          container.classList.remove("tooLow");
+        }, 1000);
       }
       currentPlayer = currentPlayer === 0 ? 1 : 0;
       switchPlayer();

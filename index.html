@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link rel="stylesheet" href="style.css" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <body>
-        <nav>
-            <h1>Guess The Number 2 Player Mode</h1>
-        </nav>
-        <section>
-            <div class="container player1">
-                <h2>Player 1</h2>
-                <div class="container-number1">
-                    <p id="randomNumber1">?</p>
-                </div>
-                <div class="container-input1">
-                    <input type="number" id="number1" />
-                    <button id="guess1">Guess</button>
-                </div>
-                <div class="status1">
-                    <p>Status: <span id="statusText1">?</span></p>
-                    <p>Guesses: <span id="guessesText1">0</span></p>
-                </div>
-            </div>
+  <body>
+    <section>
+      <div class="container player1">
+        <h2>Player 1</h2>
+        <div class="number-line"></div>
+        <div class="container-number1">
+          <p id="randomNumber1">?</p>
+        </div>
+        <div class="container-input1">
+          <input type="number" id="number1" inputmode="numeric" />
+          <button id="guess1">Guess</button>
+        </div>
+        <div class="status1">
+          <p>Status: <span id="statusText1">?</span></p>
+          <p>Guesses: <span id="guessesText1">0</span></p>
+        </div>
+      </div>
 
-            <div class="container player2 inactive">
-                <h2>Player 2</h2>
-                <div class="container-number2">
-                    <p id="randomNumber2">?</p>
-                </div>
-                <div class="container-input2">
-                    <input type="number" id="number2" />
-                    <button id="guess2">Guess</button>
-                </div>
-                <div class="status2">
-                    <p>Status: <span id="statusText2">?</span></p>
-                    <p>Guesses: <span id="guessesText2">0</span></p>
-                </div>
-            </div>
-        </section>
-        <button id="restartButton">Again!</button>
-        <script src="index.js"></script>
-    </body>
+      <div class="container player2 inactive">
+        <h2>Player 2</h2>
+        <div class="container-number2">
+          <div class="number-line"></div>
+          <p id="randomNumber2">?</p>
+        </div>
+        <div class="container-input2">
+          <input type="number" id="number2" inputmode="numeric" />
+          <button id="guess2">Guess</button>
+        </div>
+        <div class="status2">
+          <p>Status: <span id="statusText2">?</span></p>
+          <p>Guesses: <span id="guessesText2">0</span></p>
+        </div>
+      </div>
+    </section>
+    <button id="restartButton">Again!</button>
+    <script src="index.js"></script>
+  </body>
 </html>
