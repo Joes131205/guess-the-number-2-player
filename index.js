@@ -165,7 +165,6 @@ rangeSubmit.addEventListener("click", function (e) {
   e.preventDefault();
   const minValue = Number(rangeMin.value);
   const maxValue = Number(rangeMax.value);
-  console.log(minValue, maxValue);
   if (minValue && maxValue && minValue < maxValue && maxValue > minValue) {
     min = minValue;
     max = maxValue;
