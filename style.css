@@ -5,7 +5,7 @@ body {
   user-select: none;
 }
 
-p {
+* {
   font-family: "VT323", Arial;
 }
 
@@ -47,7 +47,23 @@ section {
   align-items: center;
 }
 
-input[type="number"] {
+#number1 {
+  border: 4px solid #eee;
+  font-family: inherit;
+  color: inherit;
+  font-size: 3rem;
+  width: 10rem;
+  padding: 2rem 4rem;
+  text-align: center;
+  display: block;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bolder;
+  font-family: "Press Start 2P", Arial;
+  background: black;
+}
+
+#number2 {
   border: 4px solid #eee;
   font-family: inherit;
   color: inherit;
@@ -119,11 +135,13 @@ input::-webkit-inner-spin-button {
   border-radius: 10px;
   transition: 0.5s;
 }
+
 #guess1:hover {
   background: rgb(209, 243, 255);
   transition: 0.5s;
   transform: scale(1.05);
 }
+
 #guess2 {
   padding: 1rem 2rem;
   font-size: xx-large;
@@ -191,4 +209,96 @@ input::-webkit-inner-spin-button {
   100% {
     box-shadow: 0px 0px 0px 0px rgb(0, 174, 255) inset;
   }
+}
+
+.between {
+  position: absolute;
+  color: white;
+  left: 44%;
+  top: 7px;
+  z-index: 10;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  background-color: white;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: xx-large;
+  color: red;
+}
+
+.modal > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#rangeMin {
+  width: 3rem;
+  height: 2rem;
+  margin-top: 20px;
+  font-size: xx-large;
+  text-align: center;
+}
+
+#rangeMax {
+  width: 3rem;
+  height: 2rem;
+  margin-top: 20px;
+  font-size: xx-large;
+  text-align: center;
+}
+
+#rangeSubmit {
+  font-size: xx-large;
+  background: none;
+  border-radius: 10px;
+}
+
+#setRange {
+  position: absolute;
+  padding: 0.6rem;
+  font-family: "Press Start 2P", Arial;
+  left: 46%;
+  z-index: 5;
+  background-color: white;
+  border-radius: 30px;
+}
+
+#setRange:hover {
+  background: rgb(211, 211, 211);
+  transition: 0.5s;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+  animation: transform 0.5s;
+}
+
+.hidden {
+  display: none;
 }

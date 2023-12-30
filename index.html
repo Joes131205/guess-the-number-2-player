@@ -24,6 +24,29 @@
   </head>
 
   <body>
+    <button id="setRange">Set range</button>
+    <div class="overlay hidden"></div>
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <br />
+      <br />
+      <form>
+        <label for="rangeMin">Minimum Range: </label>
+        <input type="number" inputmode="numeric" id="rangeMin" />
+        <br />
+        <br />
+        <br />
+        <label for="rangeMax">Maximum Range: </label>
+        <input type="number" inputmode="numeric" id="rangeMax" />
+        <br />
+        <br />
+        <br />
+        <button id="rangeSubmit">Submit</button>
+      </form>
+    </div>
+    <p class="between">
+      (Between <span id="min"></span> - <span id="max"></span>)
+    </p>
     <section>
       <div class="container player1">
         <h2>Player 1</h2>

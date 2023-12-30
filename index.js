@@ -18,6 +18,19 @@ const guessesText2 = document.getElementById("guessesText2");
 
 const restartButton = document.getElementById("restartButton");
 
+// Range Setting
+const setRange = document.getElementById("setRange");
+const modalEl = document.querySelector(".modal");
+const overlayEl = document.querySelector(".overlay");
+
+const rangeMin = document.getElementById("rangeMin");
+const rangeMax = document.getElementById("rangeMax");
+const rangeSubmit = document.getElementById("rangeSubmit");
+
+const minEl = document.getElementById("min");
+const maxEl = document.getElementById("max");
+
+const closeModalEl = document.querySelector(".close-modal");
 // Game Logic
 
 let randomNumbers = [0, 0];
@@ -26,6 +39,9 @@ let guesses = [0, 0];
 let currentPlayer = 0;
 
 let playing = true;
+
+let min = 1;
+let max = 100;
 
 restartButton.addEventListener("click", startGame);
 
@@ -57,6 +73,9 @@ function startGame() {
   randomNumber1El.style.padding = "0.1rem 5rem";
   randomNumber2El.style.padding = "0.1rem 5rem";
 
+  minEl.textContent = min;
+  maxEl.textContent = max;
+
   playing = true;
   currentPlayer = 0;
 }
@@ -64,7 +83,7 @@ function startGame() {
 startGame();
 
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 100) + 1;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function switchPlayer() {
@@ -88,7 +107,7 @@ function handleWin(container, status) {
 function handleGuess(container, input, button, status, guessText) {
   if (playing) {
     const guess = Number(input.value);
-    if (!guess || guess < 0 || guess > 100) {
+    if (!guess || guess < min || guess > max) {
       button.style.background = "red";
       setTimeout(() => {
         button.style.background = "white";
@@ -139,3 +158,31 @@ guess2Button.addEventListener("click", function () {
     guessesText2
   );
 });
+
+// Handle Modal
+
+rangeSubmit.addEventListener("click", function (e) {
+  e.preventDefault();
+  const minValue = Number(rangeMin.value);
+  const maxValue = Number(rangeMax.value);
+  console.log(minValue, maxValue);
+  if (minValue && maxValue && minValue < maxValue && maxValue > minValue) {
+    min = minValue;
+    max = maxValue;
+    startGame();
+    closeModal();
+  }
+});
+
+setRange.addEventListener("click", openModal);
+closeModalEl.addEventListener("click", closeModal);
+
+function openModal() {
+  modalEl.classList.remove("hidden");
+  overlayEl.classList.remove("hidden");
+}
+
+function closeModal() {
+  modalEl.classList.add("hidden");
+  overlayEl.classList.add("hidden");
+}
