@@ -259,6 +259,7 @@ input::-webkit-inner-spin-button {
   border: none;
   font-size: 50px;
   color: red;
+  cursor: pointer;
 }
 
 .modal > form {
@@ -288,6 +289,7 @@ input::-webkit-inner-spin-button {
   font-size: xx-large;
   background: none;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 #setRange {
