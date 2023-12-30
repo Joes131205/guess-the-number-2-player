@@ -54,13 +54,11 @@ function startGame() {
   player2Container.classList.remove("winner");
   player1Container.classList.remove("winner");
 
-  randomNumber1El.style.padding = "1rem 3rem";
-  randomNumber2El.style.padding = "1rem 3rem";
+  randomNumber1El.style.padding = "0.1rem 5rem";
+  randomNumber2El.style.padding = "0.1rem 5rem";
 
   playing = true;
   currentPlayer = 0;
-
-  console.log(randomNumbers);
 }
 
 startGame();
@@ -82,8 +80,8 @@ function handleWin(container, status) {
     : (statusText1.textContent = "Yikes!");
 
   currentPlayer === 0
-    ? (randomNumber1El.style.padding = "1rem 6rem")
-    : (randomNumber2El.style.padding = "1rem 6rem");
+    ? (randomNumber1El.style.padding = "0.1rem 10rem")
+    : (randomNumber2El.style.padding = "0.1rem 10rem");
   randomNumber1El.textContent = randomNumbers[0];
   randomNumber2El.textContent = randomNumbers[1];
 }
@@ -99,7 +97,6 @@ function handleGuess(container, input, button, status, guessText) {
     }
     guesses[currentPlayer]++;
     guessText.textContent = guesses[currentPlayer];
-    console.log(guess === randomNumbers[currentPlayer]);
     if (guess === randomNumbers[currentPlayer]) {
       handleWin(container, status);
       return;

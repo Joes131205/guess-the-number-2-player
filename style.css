@@ -2,6 +2,11 @@ html,
 body {
   margin: 0;
   padding: 0;
+  user-select: none;
+}
+
+p {
+  font-family: "VT323", Arial;
 }
 
 nav {
@@ -17,12 +22,16 @@ nav {
   box-shadow: 0 0 5px 3px white;
   color: white;
 }
+
 p {
   font-size: 2rem;
 }
+
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
+  font-family: "Press Start 2P", Arial;
 }
+
 section {
   display: flex;
   justify-content: space-around;
@@ -39,18 +48,19 @@ section {
 }
 
 input[type="number"] {
-  background: none;
   border: 4px solid #eee;
   font-family: inherit;
   color: inherit;
-  font-size: 5rem;
+  font-size: 3rem;
   width: 10rem;
-  padding: 0.2rem;
+  padding: 2rem 4rem;
   text-align: center;
   display: block;
   margin-bottom: 3rem;
   text-align: center;
   font-weight: bolder;
+  font-family: "Press Start 2P", Arial;
+  background: black;
 }
 
 input::-webkit-outer-spin-button,
@@ -61,42 +71,73 @@ input::-webkit-inner-spin-button {
 
 #randomNumber1 {
   display: inline-block;
-  padding: 1rem 4rem;
   background: white;
   color: black;
   font-weight: bolder;
   font-size: 5rem;
   z-index: 2;
   transition: 0.3s;
+  font-family: "Bungee", Arial;
+  border-radius: 20px;
 }
 
 #randomNumber2 {
   display: inline-block;
-  padding: 1rem 4rem;
   background: white;
   color: black;
   font-weight: bolder;
   font-size: 5rem;
   z-index: 2;
   transition: 0.3s;
+  font-family: "Bungee", Arial;
+  border-radius: 20px;
 }
 
 .player1 {
   background: #00232b;
-  border: 5px solid;
+  border: 5px solid black;
   border-style: none solid none none;
-  border-right-color: #ad9402;
   color: white;
   transition: 0.2s;
   animation-iteration-count: infinite;
 }
+
 .player2 {
   background: #220000;
-  border: 5px solid;
+  border: 5px solid black;
   border-style: none none none solid;
-  border-left-color: #ad9402;
   color: white;
   transition: 0.2s;
+}
+
+#guess1 {
+  padding: 1rem 2rem;
+  font-size: xx-large;
+  font-family: "Press Start 2P", Arial;
+  background: white;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+#guess1:hover {
+  background: rgb(209, 243, 255);
+  transition: 0.5s;
+  transform: scale(1.05);
+}
+#guess2 {
+  padding: 1rem 2rem;
+  font-size: xx-large;
+  font-family: "Press Start 2P", Arial;
+  background: white;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+#guess2:hover {
+  background: rgb(255, 209, 209);
+  transition: 0.5s;
+  transform: scale(1.05);
 }
 
 .inactive {
@@ -108,15 +149,22 @@ input::-webkit-inner-spin-button {
 #restartButton {
   position: absolute;
   top: 5rem;
-  left: 56rem;
-  padding: 0.5rem 2rem;
+  left: 45%;
+  padding: 1rem 2rem;
   border-radius: 10px;
   font-size: larger;
+  font-family: "Press Start 2P", Arial;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+#restartButton:hover {
+  background: rgb(211, 211, 211);
+  transition: 0.5s;
 }
 
 .winner {
-  color: black;
-  background: #bdbd00;
+  background: #5a5a00;
 }
 
 @keyframes tooHigh {
@@ -127,12 +175,15 @@ input::-webkit-inner-spin-button {
     box-shadow: 0px 0px 0px 0px rgb(255, 0, 0) inset;
   }
 }
+
 .tooHigh {
   animation: tooHigh 1s linear;
 }
+
 .tooLow {
   animation: tooLow 1s linear;
 }
+
 @keyframes tooLow {
   0% {
     box-shadow: 0px 0px 5px 20px rgb(0, 174, 255) inset;
