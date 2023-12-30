@@ -9,6 +9,24 @@ body {
   font-family: "VT323", Arial;
 }
 
+img {
+  position: absolute;
+  z-index: 10;
+  width: 75px;
+  top: 90%;
+  left: 48%;
+  background: white;
+  border: 3px solid rgb(255, 255, 255);
+  transition: 0.2s;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+img:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -239,7 +257,7 @@ input::-webkit-inner-spin-button {
 .close-modal {
   background: none;
   border: none;
-  font-size: xx-large;
+  font-size: 50px;
   color: red;
 }
 
@@ -280,6 +298,8 @@ input::-webkit-inner-spin-button {
   z-index: 5;
   background-color: white;
   border-radius: 30px;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 #setRange:hover {
@@ -295,7 +315,7 @@ input::-webkit-inner-spin-button {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(3px);
-  z-index: 5;
+  z-index: 10;
   animation: transform 0.5s;
 }
 
